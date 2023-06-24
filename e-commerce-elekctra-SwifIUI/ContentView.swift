@@ -7,23 +7,27 @@
 
 import SwiftUI
 
-var Anahi = Persona(name: "Anahi")
+
+
 
 struct ContentView: View {
+    var WebApi = WebService()
     var body: some View {
         VStack{
             
-            Text(Anahi.name)
-            var lookChane = Anahi.objectWillChange.sink { _ in
-                Text(Anahi.name)
-                print("Se cambiara el nombre de: \(Anahi.name)")
-                Anahi.setNombre(nuevoNombre: "Jona")
-            }
+            Text("hola")
             
             
+                        
+        }.onAppear{
+            WebApi.getArticulos()
         }
+            
+            
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     
