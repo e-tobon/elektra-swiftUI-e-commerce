@@ -37,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E461D0722A47A93900220456 /* Vistas */ = {
+			isa = PBXGroup;
+			children = (
+				E4F6BBC22A46A92800788082 /* ContentView.swift */,
+			);
+			path = Vistas;
+			sourceTree = "<group>";
+		};
 		E4F6BBB42A46A92800788082 = {
 			isa = PBXGroup;
 			children = (
@@ -56,11 +64,11 @@
 		E4F6BBBF2A46A92800788082 /* e-commerce-elekctra-SwifIUI */ = {
 			isa = PBXGroup;
 			children = (
+				E461D0722A47A93900220456 /* Vistas */,
 				E4F6BBD42A46C87800788082 /* Info.plist */,
 				E4F6BBCF2A46AB0B00788082 /* Repository */,
 				E4F6BBCE2A46AAFD00788082 /* Data */,
 				E4F6BBC02A46A92800788082 /* e_commerce_elekctra_SwifIUIApp.swift */,
-				E4F6BBC22A46A92800788082 /* ContentView.swift */,
 				E4F6BBC42A46A92A00788082 /* Assets.xcassets */,
 				E4F6BBC62A46A92A00788082 /* Preview Content */,
 			);

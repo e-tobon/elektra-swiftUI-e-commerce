@@ -7,8 +7,16 @@
 
 import Foundation
 
-class WebService:ObservableObject{
-    @Published var articulos: Tienda? //Arreglo de modelo producto
+
+protocol WebServiceDelegate{
+    func delegateUpdateProductos(productos:[producto])
+}
+
+class WebService{
+    private var articulos: Tienda? //Arreglo de modelo producto
+    var productos: [producto]?
+    //Implementando delegado
+    var delegado:WebServiceDelegate?
     
     //Metodo para hacer fetch a la API
     func getArticulos(){
@@ -34,7 +42,9 @@ class WebService:ObservableObject{
                     do{
                         let articulosDecodificados = try JSONDecoder().decode(Tienda.self, from: data)
                         self.articulos = articulosDecodificados
-                        print(data)
+                        self.productos = self.articulos!.resultado!.productos
+                        self.delegado?.delegateUpdateProductos(productos: self.productos!)
+                        
                     }
                     catch let error{
                         print(error)
