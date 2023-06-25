@@ -11,6 +11,7 @@ struct ArticuloRowView: View {
     var body: some View {
         VStack{
             Image("elektraLogo")
+                .padding(.bottom)
             Text("Pantalla Led HKPro 32'' HD Smart TV HKP32SM8")
                 .bold()
                 .shadow(radius: 10)
@@ -21,14 +22,14 @@ struct ArticuloRowView: View {
                 .frame(maxWidth:.infinity,alignment: .leading)
                 .font(.system(size: 25))
                 .padding()
-            HStack{
+            HStack(spacing:0){
                 Text("Categoria: ")
                     .font(.system(size: 12))
-                    .frame(maxWidth:.infinity,alignment: .leading)
                 Text("c")
                     .font(.system(size: 12))
                     .frame(maxWidth:.infinity,alignment: .leading)
-            }
+                    .bold()
+            }.padding()
         }
     }
 }
