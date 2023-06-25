@@ -23,9 +23,16 @@ struct ProductoDetail: View {
                     
                 }
             }
-            preciosArticulo(precioAnterior: articulo?.precioRegular, precioActual: articulo?.precioFinal,Ahorro: articulo?.montoDescuento)
-                .frame(maxWidth: .infinity,alignment: .leading)
-                .frame(maxHeight: .infinity,alignment: .top)
+            
+            HStack{
+                preciosArticulo(precioAnterior: articulo?.precioRegular, precioActual: articulo?.precioFinal,Ahorro: articulo?.montoDescuento)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .frame(maxHeight: .infinity,alignment: .top)
+                
+                pagosSemanales(pagosSemanales: articulo!.pagoSemanalPrincipal!)
+                    .padding()
+            }
+            
 
         }
     }
@@ -116,6 +123,32 @@ struct preciosArticulo:View{
                     .font(.system(size:28))
                     .padding(30)
             }
+        }
+    }
+}
+
+struct pagosSemanales:View{
+    var pagosSemanales:Int?
+    var body: some View{
+        VStack{
+            Text("Llevate con solo")
+                .bold()
+                .shadow(radius: 5)
+                .foregroundColor(.red)
+                .font(.system(size:13))
+            
+            Text("$\(pagosSemanales!)")
+                .bold()
+                .shadow(radius: 10)
+                .foregroundColor(.black)
+                .font(.system(size:25))
+            
+            Text("Semanales")
+                .bold()
+                .foregroundColor(.black)
+                .font(.system(size: 13))
+                .padding(.leading)
+            
         }
     }
 }
