@@ -12,6 +12,7 @@ struct ArticuloRowView: View {
     let imageString:String?
     let precioFinal:Double?
     let categoria:String?
+    
     var body: some View {
         VStack{
             AsyncImage(url: URL(string: imageString!)) { image in

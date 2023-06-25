@@ -9,12 +9,18 @@ import SwiftUI
 
 struct ListaArticulosView: View {
     var articulos:[producto]?
+    
     var body: some View {
-        List(self.articulos!,id: \.id){
-            articulo in
-            ArticuloRowView(nombreArticulo: articulo.nombre, imageString: articulo.urlImagenes![0], precioFinal: articulo.precioFinal, categoria: articulo.codigoCategoria)
-            
-        }
+        NavigationView{
+            List(self.articulos!,id: \.id){
+                articulo in
+                NavigationLink(destination: ContentView(mostrar: false), label: {
+                    ArticuloRowView(nombreArticulo: articulo.nombre, imageString: articulo.urlImagenes![0], precioFinal: articulo.precioFinal, categoria: articulo.codigoCategoria)
+                })
+                    
+            }
+        }.navigationBarBackButtonHidden(true)
+       
     }
 }
 

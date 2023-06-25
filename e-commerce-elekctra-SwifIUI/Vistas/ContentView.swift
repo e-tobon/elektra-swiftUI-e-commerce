@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct ContentView: View{
-    
-    var WebApi = WebService()
+     var showFirstScreen:Bool?
+     private var WebApi = WebService()
+     
      @State var articulos:[producto]?
      @State var hideLoader:Bool = true
-     @State var showFirstScreen:Bool = true
      @State private var action:Int? = 0
+    
+    init(mostrar:Bool){
+        self.showFirstScreen = mostrar
+    }
     
     var body: some View {
         NavigationView{
             VStack{
+                
                 NavigationLink(destination:ListaArticulosView(articulos: self.articulos),tag:1,selection: $action){}
-                if(showFirstScreen){
+                    
+                if(showFirstScreen == true){
                     Image("elektraLogo")
                         .padding(.bottom)
                         .padding(80)
@@ -47,11 +53,14 @@ struct ContentView: View{
                     
                     
                 }
-                    
+                else{
+                    Text("Exitoso")
+                }
             }.onAppear{
                 self.WebApi.delegado = self
             }
-        }
+            
+        }.navigationBarBackButtonHidden(true)
         
             
     }
@@ -61,7 +70,7 @@ struct ContentView: View{
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
+        ContentView(mostrar: false)
     }
 }
 
@@ -69,7 +78,6 @@ extension ContentView:WebServiceDelegate{
      func delegateUpdateProductos(productos: [producto]) {
          self.articulos = productos
          self.hideLoader = true
-         //self.showFirstScreen = false
          self.action = 1
          print(productos)
     }
