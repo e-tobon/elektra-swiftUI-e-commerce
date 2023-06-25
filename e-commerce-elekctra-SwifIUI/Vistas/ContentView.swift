@@ -13,12 +13,12 @@ struct ContentView: View{
      @State var articulos:[producto]?
      @State var hideLoader:Bool = true
      @State var showFirstScreen:Bool = true
-    @State private var action:Int? = 0
+     @State private var action:Int? = 0
     
     var body: some View {
         NavigationView{
             VStack{
-                NavigationLink(destination:ListaArticulosView(),tag:1,selection: $action){}
+                NavigationLink(destination:ListaArticulosView(articulos: self.articulos),tag:1,selection: $action){}
                 if(showFirstScreen){
                     Image("elektraLogo")
                         .padding(.bottom)
