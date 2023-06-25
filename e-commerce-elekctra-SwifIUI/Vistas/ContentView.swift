@@ -13,42 +13,46 @@ struct ContentView: View{
      @State var articulos:[producto]?
      @State var hideLoader:Bool = true
      @State var showFirstScreen:Bool = true
-        
+    @State private var action:Int? = 0
     
     var body: some View {
-        VStack{
-            if(showFirstScreen){
-                Image("elektraLogo")
-                    .padding(.bottom)
-                    .padding(80)
-                ZStack{
-                    Button{
-                        if articulos == nil {
-                            self.WebApi.getArticulos()
-                            hideLoader = false
-                        }else{
-                            print("La variable ya existe")
+        NavigationView{
+            VStack{
+                NavigationLink(destination:ListaArticulosView(),tag:1,selection: $action){}
+                if(showFirstScreen){
+                    Image("elektraLogo")
+                        .padding(.bottom)
+                        .padding(80)
+                    ZStack{
+                        Button{
+                            if articulos == nil {
+                                self.WebApi.getArticulos()
+                                hideLoader = false
+                            }else{
+                                print("La variable ya existe")
+                            }
+                        } label: {
+                            Text("Ver articulos")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.red)
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
                         }
-                    } label: {
-                        Text("Ver articulos")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.red)
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
                     }
+                    if(hideLoader){
+                    }else{
+                        ProgressView()
+                    }
+                    
+                    
                 }
-                if(hideLoader){
-                }else{
-                    ProgressView()
-                }
-                
-                
+                    
+            }.onAppear{
+                self.WebApi.delegado = self
             }
-                
-        }.onAppear{
-            self.WebApi.delegado = self
         }
+        
             
     }
 }
@@ -65,7 +69,8 @@ extension ContentView:WebServiceDelegate{
      func delegateUpdateProductos(productos: [producto]) {
          self.articulos = productos
          self.hideLoader = true
-         self.showFirstScreen = false
+         //self.showFirstScreen = false
+         self.action = 1
          print(productos)
     }
     
