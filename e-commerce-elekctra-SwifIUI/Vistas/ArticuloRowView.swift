@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct ArticuloRowView: View {
+    let nombreArticulo:String?
+    let imageURL:String?
+    let precioFinal:Double?
+    let categoria:String?
     var body: some View {
         VStack{
             Image("elektraLogo")
                 .padding(.bottom)
-            Text("Pantalla Led HKPro 32'' HD Smart TV HKP32SM8")
+            Text(nombreArticulo ?? "")
                 .bold()
                 .shadow(radius: 10)
                 .multilineTextAlignment(.center)
                 .padding()
-            
-            Text("$5000.0")
+        
+            Text("$\(precioFinal ?? 0)")
                 .frame(maxWidth:.infinity,alignment: .leading)
                 .font(.system(size: 25))
                 .padding()
             HStack(spacing:0){
                 Text("Categoria: ")
                     .font(.system(size: 12))
-                Text("c")
+                Text(categoria ?? "")
                     .font(.system(size: 12))
                     .frame(maxWidth:.infinity,alignment: .leading)
                     .bold()
@@ -36,6 +40,6 @@ struct ArticuloRowView: View {
 
 struct ArticuloRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticuloRowView()
+        ArticuloRowView(nombreArticulo: "", imageURL: "", precioFinal: nil, categoria: nil)
     }
 }

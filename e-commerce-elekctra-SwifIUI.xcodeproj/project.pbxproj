@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4506B6A2A47F7CF00F3AAAD /* ProductosListaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506B692A47F7CF00F3AAAD /* ProductosListaView.swift */; };
 		E4506B6C2A47F8C900F3AAAD /* ArticuloRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506B6B2A47F8C900F3AAAD /* ArticuloRowView.swift */; };
+		E4506B6E2A48025D00F3AAAD /* ListaArticulosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506B6D2A48025D00F3AAAD /* ListaArticulosView.swift */; };
 		E4F6BBC12A46A92800788082 /* e_commerce_elekctra_SwifIUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F6BBC02A46A92800788082 /* e_commerce_elekctra_SwifIUIApp.swift */; };
 		E4F6BBC32A46A92800788082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F6BBC22A46A92800788082 /* ContentView.swift */; };
 		E4F6BBC52A46A92A00788082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F6BBC42A46A92A00788082 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		E4506B692A47F7CF00F3AAAD /* ProductosListaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductosListaView.swift; sourceTree = "<group>"; };
 		E4506B6B2A47F8C900F3AAAD /* ArticuloRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticuloRowView.swift; sourceTree = "<group>"; };
+		E4506B6D2A48025D00F3AAAD /* ListaArticulosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaArticulosView.swift; sourceTree = "<group>"; };
 		E4F6BBBD2A46A92800788082 /* e-commerce-elekctra-SwifIUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-commerce-elekctra-SwifIUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F6BBC02A46A92800788082 /* e_commerce_elekctra_SwifIUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_commerce_elekctra_SwifIUIApp.swift; sourceTree = "<group>"; };
 		E4F6BBC22A46A92800788082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 				E4F6BBC22A46A92800788082 /* ContentView.swift */,
 				E4506B692A47F7CF00F3AAAD /* ProductosListaView.swift */,
 				E4506B6B2A47F8C900F3AAAD /* ArticuloRowView.swift */,
+				E4506B6D2A48025D00F3AAAD /* ListaArticulosView.swift */,
 			);
 			path = Vistas;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				E4506B6C2A47F8C900F3AAAD /* ArticuloRowView.swift in Sources */,
 				E4F6BBC32A46A92800788082 /* ContentView.swift in Sources */,
 				E4F6BBC12A46A92800788082 /* e_commerce_elekctra_SwifIUIApp.swift in Sources */,
+				E4506B6E2A48025D00F3AAAD /* ListaArticulosView.swift in Sources */,
 				E4506B6A2A47F7CF00F3AAAD /* ProductosListaView.swift in Sources */,
 				E4F6BBD32A46B5A200788082 /* WebService.swift in Sources */,
 				E4F6BBD12A46AB7300788082 /* Productos.swift in Sources */,

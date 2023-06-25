@@ -11,7 +11,7 @@ import SwiftUI
 struct e_commerce_elekctra_SwifIUIApp: App {
     var body: some Scene {
         WindowGroup {
-           ArticuloRowView()
+           ListaArticulosView()
         }
     }
 }
