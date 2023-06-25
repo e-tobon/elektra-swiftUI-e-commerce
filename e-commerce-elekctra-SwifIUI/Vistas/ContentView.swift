@@ -9,20 +9,22 @@ import SwiftUI
 
 struct ContentView: View{
      var showFirstScreen:Bool?
+    var articulo:producto?
      private var WebApi = WebService()
      
-     @State var articulos:[producto]?
-     @State var hideLoader:Bool = true
+     @State private var articulos:[producto]?
+     @State private var hideLoader:Bool = true
+        @State private var Showpop:Bool = false
      @State private var action:Int? = 0
     
-    init(mostrar:Bool){
+    init(mostrar:Bool,articulo:producto?){
         self.showFirstScreen = mostrar
+        self.articulo = articulo
     }
     
     var body: some View {
         NavigationView{
             VStack{
-                
                 NavigationLink(destination:ListaArticulosView(articulos: self.articulos),tag:1,selection: $action){}
                     
                 if(showFirstScreen == true){
@@ -54,7 +56,10 @@ struct ContentView: View{
                     
                 }
                 else{
-                    Text("Exitoso")
+                    if let articulo = self.articulo{
+                        Text(articulo.nombre!)
+                    }
+                    
                 }
             }.onAppear{
                 self.WebApi.delegado = self
@@ -70,7 +75,7 @@ struct ContentView: View{
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView(mostrar: false)
+        ContentView(mostrar: false,articulo: nil)
     }
 }
 

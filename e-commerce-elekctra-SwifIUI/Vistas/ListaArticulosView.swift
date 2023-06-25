@@ -14,7 +14,7 @@ struct ListaArticulosView: View {
         NavigationView{
             List(self.articulos!,id: \.id){
                 articulo in
-                NavigationLink(destination: ContentView(mostrar: false), label: {
+                NavigationLink(destination: ContentView(mostrar: false,articulo: articulo), label: {
                     ArticuloRowView(nombreArticulo: articulo.nombre, imageString: articulo.urlImagenes![0], precioFinal: articulo.precioFinal, categoria: articulo.codigoCategoria)
                 })
                     
