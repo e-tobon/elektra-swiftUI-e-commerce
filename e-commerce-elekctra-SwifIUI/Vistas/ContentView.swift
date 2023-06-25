@@ -7,56 +7,51 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View{
     
     var WebApi = WebService()
      @State var articulos:[producto]?
      @State var hideLoader:Bool = true
+     @State var showFirstScreen:Bool = true
+        
     
     var body: some View {
-                
         VStack{
-            
-            Image("elektraLogo")
-                .padding(.bottom)
-                .padding(80)
-                
-            ZStack{
-        
-                Button{
-                    if articulos == nil {
-                        self.WebApi.getArticulos()
-                    }else{
-                        print("La variable ya existe")
+            if(showFirstScreen){
+                Image("elektraLogo")
+                    .padding(.bottom)
+                    .padding(80)
+                ZStack{
+                    Button{
+                        if articulos == nil {
+                            self.WebApi.getArticulos()
+                            hideLoader = false
+                        }else{
+                            print("La variable ya existe")
+                        }
+                    } label: {
+                        Text("Ver articulos")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
                     }
-                    
-                } label: {
-                    Text("Ver articulos")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
                 }
-              
-            }
-            
-            if(hideLoader){
+                if(hideLoader){
+                }else{
+                    ProgressView()
+                }
                 
-            }else{
-                ProgressView()
+                
             }
+                
         }.onAppear{
             self.WebApi.delegado = self
         }
             
     }
 }
-
-
 
 
 struct ContentView_Previews: PreviewProvider {
@@ -69,7 +64,9 @@ struct ContentView_Previews: PreviewProvider {
 extension ContentView:WebServiceDelegate{
      func delegateUpdateProductos(productos: [producto]) {
          self.articulos = productos
-        print(productos)
+         self.hideLoader = true
+         self.showFirstScreen = false
+         print(productos)
     }
     
     

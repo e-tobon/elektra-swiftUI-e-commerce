@@ -44,7 +44,6 @@ class WebService{
                         self.articulos = articulosDecodificados
                         self.productos = self.articulos!.resultado!.productos
                         self.delegado?.delegateUpdateProductos(productos: self.productos!)
-                        
                     }
                     catch let error{
                         print(error)
