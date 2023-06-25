@@ -20,13 +20,13 @@ struct ProductoDetail: View {
                     porcentajeDescuento(porcentaje: articulo?.porcentajeDescuento!)
                         .frame(maxWidth: .infinity,alignment: .leading)
                         .frame(maxHeight: .infinity,alignment: .top)
+                    
                 }
             }
-            
-            
-            
-            
-        
+            preciosArticulo(precioAnterior: articulo?.precioRegular, precioActual: articulo?.precioFinal,Ahorro: articulo?.montoDescuento)
+                .frame(maxWidth: .infinity,alignment: .leading)
+                .frame(maxHeight: .infinity,alignment: .top)
+
         }
     }
 }
@@ -64,11 +64,13 @@ struct porcentajeDescuento: View{
                 .shadow(radius: 5)
                 .foregroundColor(.red)
                 .font(.system(size:13))
+            
             Text("\(porcentaje?.redondear(numeroDeDecimales: 1) ?? "")%")
                 .bold()
                 .shadow(radius: 5)
                 .foregroundColor(.red)
                 .font(.system(size:18))
+            
             Text("de descuento")
                 .bold()
                 .shadow(radius: 5)
@@ -76,6 +78,44 @@ struct porcentajeDescuento: View{
                 .font(.system(size: 13))
                 .padding(.leading)
             
+        }
+    }
+}
+
+struct preciosArticulo:View{
+    var precioAnterior:Double?
+    var precioActual:Double?
+    var Ahorro:Double?
+    
+    var body: some View{
+        VStack{
+            if(Ahorro != 0){
+                Text("Antes $\(precioAnterior?.redondear(numeroDeDecimales: 0) ?? "")")
+                    .bold()
+                    .shadow(radius: 5)
+                    .foregroundColor(.gray)
+                    .font(.system(size:20))
+                
+                Text("Ahora $\(precioActual?.redondear(numeroDeDecimales: 0) ?? "" )")
+                    .bold()
+                    .shadow(radius: 18)
+                    .foregroundColor(.red)
+                    .font(.system(size:25))
+                    .padding(.leading)
+                
+                Text("Ahorras $\(Ahorro?.redondear(numeroDeDecimales: 0) ?? "")")
+                        .bold()
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+                        
+            }else{
+                Text("$\(precioActual?.redondear(numeroDeDecimales: 0) ?? "" )")
+                    .bold()
+                    .shadow(radius: 10)
+                    .foregroundColor(.black)
+                    .font(.system(size:28))
+                    .padding(30)
+            }
         }
     }
 }
