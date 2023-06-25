@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ProductoDetail: View {
     let articulo:producto?
+    @State var indexImage:Int = 0
     var body: some View {
         VStack{
             
             ArticuloNombre(nombreArticulo: articulo?.nombre!)
             ZStack{
-                imagenesArticulo(stringImagenes: articulo?.urlImagenes, index: 0)
+                imagenesArticulo(stringImagenes: articulo?.urlImagenes, index: indexImage)
                     .frame(maxHeight: .infinity,alignment: .top)
+                    .onTapGesture {
+                        if(indexImage == (articulo?.urlImagenes?.count)! - 1){
+                            indexImage = 0
+                        }
+                        else{
+                            indexImage += 1
+                        }
+                    }
                 if(articulo?.porcentajeDescuento! != 0){
                     porcentajeDescuento(porcentaje: articulo?.porcentajeDescuento!)
                         .frame(maxWidth: .infinity,alignment: .leading)
@@ -23,6 +32,7 @@ struct ProductoDetail: View {
                     
                 }
             }
+            Text("\(indexImage + 1) / ") + Text(String(articulo?.urlImagenes?.count ?? 0))
             
             HStack{
                 preciosArticulo(precioAnterior: articulo?.precioRegular, precioActual: articulo?.precioFinal,Ahorro: articulo?.montoDescuento)
@@ -60,6 +70,7 @@ struct imagenesArticulo:View{
             ProgressView()
         }
     }
+        
 }
 
 struct porcentajeDescuento: View{
@@ -131,7 +142,7 @@ struct pagosSemanales:View{
     var pagosSemanales:Int?
     var body: some View{
         VStack{
-            Text("Llevate con solo")
+            Text("Llevatelo con solo")
                 .bold()
                 .shadow(radius: 5)
                 .foregroundColor(.red)
@@ -152,6 +163,8 @@ struct pagosSemanales:View{
         }
     }
 }
+
+
 
 struct ProductoDetail_Previews: PreviewProvider {
     static var previews: some View {
