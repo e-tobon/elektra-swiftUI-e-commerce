@@ -65,8 +65,7 @@ struct ContentView: View{
                 self.WebApi.delegado = self
             }
             
-        }.navigationBarBackButtonHidden(true)
-        
+        }
             
     }
 }
