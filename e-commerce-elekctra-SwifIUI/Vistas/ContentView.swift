@@ -57,7 +57,7 @@ struct ContentView: View{
                 }
                 else{
                     if let articulo = self.articulo{
-                        Text(articulo.nombre!)
+                        ProductoDetail(articulo: articulo)
                     }
                     
                 }

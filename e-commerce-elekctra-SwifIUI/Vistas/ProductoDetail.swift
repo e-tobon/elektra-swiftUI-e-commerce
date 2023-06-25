@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct ProductoDetail: View {
+    let articulo:producto?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(articulo!.nombre!)
+                .bold()
+                .multilineTextAlignment(.center)
+                .shadow(radius: 10)
+            
+            Image
+        }
     }
 }
 
 struct ProductoDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ProductoDetail()
+        ProductoDetail(articulo: nil)
     }
 }
